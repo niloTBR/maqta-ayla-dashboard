@@ -1421,17 +1421,15 @@ body {
 
 /* Crossings total row — natural RTL: number right, icon to its right */
 
-/* Wallet items — flag left, name right, count right */
-[dir="rtl"] .wallet-top   { flex-direction: row-reverse; }
-[dir="rtl"] .wallet-name  { margin-left: 0; margin-right: auto; }
-[dir="rtl"] .wallet-item  { text-align: right; }
+/* Wallet items — natural RTL mirrors flag/name automatically */
 
 /* Pie charts — center aligned */
 [dir="rtl"] .pie-item { text-align: center; }
 [dir="rtl"] .pie-ring svg { direction: ltr; }
 
-/* Transit cards — number right-aligned */
-[dir="rtl"] .transit-num {
+/* Transit + yard numbers — right-aligned in RTL */
+[dir="rtl"] .transit-num,
+[dir="rtl"] .yard-num {
   text-align: right;
   width: 100%;
 }
