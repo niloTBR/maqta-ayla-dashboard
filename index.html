@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Truck Entry & Exit Statistics — November 2025</title>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=Tajawal:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+<link rel="stylesheet" href="v2-bento.css">
+</head>
+<body>
+
+<!-- ══ HEADER ══════════════════════════════════════════════════ -->
+<header class="header">
+  <div class="header-left">
+    <img src="images/aseza-logo.png" class="logo logo--aseza" alt="ASEZA">
+    <span class="header-sep"></span>
+    <img src="images/ayla-logo.png" class="logo logo--ayla" alt="Maqta Ayla">
+  </div>
+  <div class="header-right">
+    <div class="lang-switch" id="langSwitch">
+      <button class="lang-btn" data-lang="en">EN</button>
+      <button class="lang-btn is-active" data-lang="ar">عربي</button>
+    </div>
+    <div class="date-picker">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/>
+      </svg>
+      <span id="dateLabel">تشرين ثاني 2025</span>
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="6 9 12 15 18 9"/>
+      </svg>
+    </div>
+  </div>
+</header>
+
+<!-- ══ BENTO GRID ═════════════════════════════════════════════ -->
+<main class="bento">
+
+  <!-- ── ROW 1 — Total + Drivers + Trucks ───────────────── -->
+
+  <div class="card card--hero" data-reveal>
+    <div class="card-inner">
+      <div class="hero-top-row">
+        <span class="card-eyebrow" data-i18n="totalMovements">Total Logistics Movements</span>
+        <span class="chip chip--coral" tabindex="0">▼ 3%<span class="chip-tooltip" data-i18n="vsLastMonth">from last month</span></span>
+      </div>
+      <div class="hero-content">
+        <span class="hero-num">92,598</span>
+        <div class="hero-chart">
+          <svg id="weeklyChart" class="weekly-chart" viewBox="0 0 300 80"></svg>
+          <div class="weekly-labels">
+            <span data-week-value="88,420">Jun</span><span data-week-value="91,300">Jul</span><span data-week-value="94,750">Aug</span><span data-week-value="96,100">Sep</span><span data-week-value="95,460">Oct</span><span data-week-value="92,598">Nov</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card card--title-card" data-reveal data-delay="80">
+    <div class="card-inner">
+      <h2 class="title-card-heading" data-i18n="dashTitle">Truck Entry & Exit Movements</h2>
+      <p class="title-card-sub" data-i18n="dashSubtitle">Project Statistics</p>
+    </div>
+  </div>
+
+  <!-- ── ROW 2 — Routes & Entry Points ─────────────────── -->
+
+  <div class="card card--insight" data-reveal data-delay="80">
+    <div class="insight-glow"></div>
+    <div class="card-inner">
+      <div class="insight-body">
+        <div class="insight-num-row">
+          <span class="insight-num">86%</span>
+        </div>
+        <p class="insight-text" data-i18n-html="insightText">of all entry points to Aqaba city <strong>were through Al-Rashidiya</strong></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="card card--crossings" data-reveal data-delay="140">
+    <div class="card-inner">
+      <div class="crossings-top">
+        <div class="eyebrow-row">
+          <span class="card-eyebrow" data-i18n="trucksRecorded">Trucks Recorded</span>
+          <span class="mini-chip mini-chip--up" tabindex="0">▲ 4%<span class="badge-tooltip" data-i18n="vsLastMonth">from last month</span></span>
+        </div>
+        <div class="crossings-total-row">
+          <img src="images/icon-truck.svg" class="wallets-total-icon" alt="">
+          <span class="wallets-total-num">15,629</span>
+        </div>
+      </div>
+      <div class="crossings-separator"></div>
+      <div class="crossings-bottom">
+        <span class="card-eyebrow" data-i18n="borderCrossings">Entry Points</span>
+        <div class="pies-grid" id="piesGrid"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="transit-stack" data-reveal data-delay="200">
+    <div class="card card--transit">
+      <div class="card-inner">
+        <div class="eyebrow-row">
+          <span class="card-eyebrow" data-i18n="transitMovements">Transit Movements</span>
+          <span class="mini-chip mini-chip--down" tabindex="0">▼ 5%<span class="badge-tooltip" data-i18n="vsLastMonth">from last month</span></span>
+        </div>
+        <span class="transit-num">2,581</span>
+        <span class="transit-sub" data-i18n="transitMovementsSub">via passenger terminal</span>
+      </div>
+    </div>
+    <div class="card card--transit">
+      <div class="card-inner">
+        <div class="eyebrow-row">
+          <span class="card-eyebrow" data-i18n="transitPermits">Transit Permits</span>
+          <span class="mini-chip mini-chip--down" tabindex="0">▼ 8%<span class="badge-tooltip" data-i18n="vsLastMonth">from last month</span></span>
+        </div>
+        <span class="transit-num">629</span>
+        <span class="transit-sub" data-i18n="transitPermitsSub">via passenger terminal</span>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ── ROW 3 — Smart Gates + Processing Time + Nationalities ── -->
+
+  <div class="card card--wallets" data-reveal data-delay="80">
+    <div class="card-inner">
+      <div class="crossings-top">
+        <div class="eyebrow-row">
+          <span class="card-eyebrow" data-i18n="registeredDrivers">Registered Drivers</span>
+          <span class="mini-chip mini-chip--up" tabindex="0">▲ 2%<span class="badge-tooltip" data-i18n="vsLastMonth">from last month</span></span>
+        </div>
+        <div class="crossings-total-row">
+          <img src="images/icon-driver.svg" class="wallets-total-icon" alt="">
+          <span class="wallets-total-num">17,318</span>
+        </div>
+      </div>
+      <div class="crossings-separator"></div>
+      <div class="crossings-bottom">
+        <span class="card-eyebrow" data-i18n="nationality">Nationality</span>
+        <div class="wallets-grid" id="walletsGrid"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card card--mini" data-reveal data-delay="80">
+    <div class="card-inner">
+      <div class="eyebrow-row">
+        <span class="card-eyebrow" data-i18n="smartGate">Smart Gate Movements</span>
+        <span class="mini-chip mini-chip--up" tabindex="0">▲ 12%<span class="badge-tooltip" data-i18n="vsLastMonth">from last month</span></span>
+      </div>
+      <div class="pulse-bars" id="pulseBars"></div>
+      <span class="mini-num">7,126</span>
+      <span class="mini-unit" data-i18n="avgPerDay">avg. per day</span>
+    </div>
+  </div>
+
+  <div class="card card--mini" data-reveal data-delay="140">
+    <div class="card-inner">
+      <div class="eyebrow-row">
+        <span class="card-eyebrow" data-i18n="processingTime">Avg. Processing Time</span>
+        <span class="mini-chip mini-chip--down" tabindex="0">▼ 3%<span class="badge-tooltip" data-i18n="vsLastMonth">from last month</span></span>
+      </div>
+      <div class="gauge-wrap">
+        <svg class="gauge-svg" viewBox="0 0 120 72">
+          <defs>
+            <linearGradient id="gaugeGrad" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0%" stop-color="#1565C0"/>
+              <stop offset="60%" stop-color="#1E88E5"/>
+              <stop offset="100%" stop-color="#64B5F6"/>
+            </linearGradient>
+          </defs>
+          <path d="M 10 65 A 50 50 0 0 1 110 65" fill="none" stroke="#EAEDF8" stroke-width="8" stroke-linecap="round"/>
+          <path class="gauge-fill" d="M 10 65 A 50 50 0 0 1 110 65" fill="none" stroke="url(#gaugeGrad)" stroke-width="8" stroke-linecap="round"
+                stroke-dasharray="157" stroke-dashoffset="157"/>
+        </svg>
+      </div>
+      <span class="mini-num">30s</span>
+      <span class="mini-unit" data-i18n="outOf60">31% parallel processing efficiency</span>
+    </div>
+  </div>
+
+  <!-- ── ROW 4 — Cargo ─────────────────────────────────── -->
+
+  <div class="card card--cargo" data-reveal data-delay="80">
+    <div class="card-inner">
+      <span class="card-eyebrow" data-i18n="cargoTypes">Cargo / Vehicle Types</span>
+      <div class="cargo-grid" id="cargoGrid"></div>
+    </div>
+  </div>
+
+  <!-- ── ROW 5 — Yard + Passenger + Jordan/Other split ── -->
+
+  <div class="card" data-reveal data-delay="80">
+    <div class="card-inner">
+      <div class="eyebrow-row">
+        <span class="card-eyebrow" data-i18n="yard4">Entry Movements Yard 4</span>
+        <span class="mini-chip mini-chip--up" tabindex="0">▲ 6%<span class="badge-tooltip" data-i18n="vsLastMonth">from last month</span></span>
+      </div>
+      <span class="yard-num">5,936</span>
+    </div>
+  </div>
+
+  <div class="card" data-reveal data-delay="140">
+    <div class="card-inner">
+      <div class="eyebrow-row">
+        <span class="card-eyebrow" data-i18n="passengerExits">Passenger Terminal Exits</span>
+        <span class="mini-chip mini-chip--down" tabindex="0">▼ 17%<span class="badge-tooltip" data-i18n="vsLastMonth">from last month</span></span>
+      </div>
+      <span class="yard-num">3,319</span>
+    </div>
+  </div>
+
+  <div class="card card--split-card" data-reveal data-delay="200">
+    <div class="card-inner">
+      <span class="card-eyebrow" data-i18n="passengerSplit">Passenger Traffic Split</span>
+      <div class="split-cols">
+        <div class="split-col">
+          <img src="images/jo-flag.jpg" class="split-flag" alt="Jordan">
+          <span class="split-label" data-i18n="jordan">Jordan</span>
+          <div class="split-bar-wrap" tabindex="0">
+            <div class="split-bar split-bar--jo" data-width="95"></div>
+            <span class="split-bar-tooltip">95%</span>
+          </div>
+          <span class="split-count">3,162</span>
+        </div>
+        <div class="split-col">
+          <i data-lucide="globe" class="split-globe-icon"></i>
+          <span class="split-label" data-i18n="other">Other</span>
+          <div class="split-bar-wrap" tabindex="0">
+            <div class="split-bar split-bar--other" data-width="5"></div>
+            <span class="split-bar-tooltip">5%</span>
+          </div>
+          <span class="split-count split-count--dim">157</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<footer class="footer">
+  <span>Aqaba Models · November 2025 · ASEZA</span>
+  <span>aseza.jo</span>
+</footer>
+
+<script src="v2-bento.js"></script>
+</body>
+</html>
