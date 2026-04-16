@@ -1421,7 +1421,8 @@ body {
 
 /* Crossings total row — natural RTL: number right, icon to its right */
 
-/* Wallet items — natural RTL mirrors flag/name automatically */
+/* Wallet items — numbers right-aligned in RTL */
+[dir="rtl"] .wallet-count { text-align: right; width: 100%; }
 
 /* Pie charts — center aligned */
 [dir="rtl"] .pie-item { text-align: center; }
