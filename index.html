@@ -16,6 +16,11 @@
     <img src="images/aseza-logo.png" class="logo logo--aseza" alt="ASEZA">
     <span class="header-sep"></span>
     <img src="images/ayla-logo.png" class="logo logo--ayla" alt="Maqta Ayla">
+    <span class="header-sep"></span>
+    <div class="brand-inline">
+      <div class="brand-inline-title" data-i18n="brandTitle">Aqaba Models</div>
+      <div class="brand-inline-sub" data-i18n="brandSub">ASEZA</div>
+    </div>
   </div>
   <div class="header-right">
     <div class="lang-switch" id="langSwitch">
@@ -43,7 +48,7 @@
     <div class="card-inner">
       <div class="hero-top-row">
         <span class="card-eyebrow" data-i18n="totalMovements">Total Logistics Movements</span>
-        <span class="chip chip--coral" tabindex="0">▼ 3%<span class="chip-tooltip" data-i18n="vsLastMonth">from last month</span></span>
+        <span class="chip chip--coral">▼ 3%<span class="chip-tooltip" data-i18n="vsLastMonth">from last month</span></span>
       </div>
       <div class="hero-content">
         <span class="hero-num">92,598</span>
@@ -67,8 +72,10 @@
   <!-- ── ROW 2 — Routes & Entry Points ─────────────────── -->
 
   <div class="card card--insight" data-reveal data-delay="80">
-    <div class="insight-glow"></div>
     <div class="card-inner">
+      <div class="insight-top">
+        <span class="mini-chip mini-chip--up insight-chip">▲ 4%<span class="badge-tooltip" data-i18n="vsLastMonth">from last month</span></span>
+      </div>
       <div class="insight-body">
         <div class="insight-num-row">
           <span class="insight-num">86%</span>
@@ -83,11 +90,38 @@
       <div class="crossings-top">
         <div class="eyebrow-row">
           <span class="card-eyebrow" data-i18n="trucksRecorded">Trucks Recorded</span>
-          <span class="mini-chip mini-chip--up" tabindex="0">▲ 4%<span class="badge-tooltip" data-i18n="vsLastMonth">from last month</span></span>
+          <span class="mini-chip mini-chip--up">▲ 4%<span class="badge-tooltip" data-i18n="vsLastMonth">from last month</span></span>
         </div>
         <div class="crossings-total-row">
           <img src="images/icon-truck.svg" class="wallets-total-icon" alt="">
           <span class="wallets-total-num">15,629</span>
+        </div>
+        <div class="permits-progress">
+          <div class="permits-progress-row">
+            <span class="permits-progress-label" data-i18n="permitsCreated">Permits Created</span>
+            <span class="permits-progress-stat"><span class="permits-progress-count">12,345</span> · <span class="permits-progress-pct">79%</span></span>
+          </div>
+          <div class="permits-progress-bar-wrap">
+            <div class="permits-progress-bar" style="width: 79%"></div>
+          </div>
+        </div>
+        <div class="transit-split crossings-split">
+          <div class="transit-split-item">
+            <span class="transit-split-label">
+              <img src="images/jo-flag.jpg" class="transit-split-flag" alt="Jordan">
+              <span data-i18n="transitJordanian">Jordanian</span>
+            </span>
+            <span class="transit-split-value">10,940</span>
+          </div>
+          <div class="transit-split-item">
+            <span class="transit-split-label">
+              <svg class="transit-split-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+              </svg>
+              <span data-i18n="transitForeign">Foreign</span>
+            </span>
+            <span class="transit-split-value">4,689</span>
+          </div>
         </div>
       </div>
       <div class="crossings-separator"></div>
@@ -103,20 +137,58 @@
       <div class="card-inner">
         <div class="eyebrow-row">
           <span class="card-eyebrow" data-i18n="transitMovements">Transit Movements</span>
-          <span class="mini-chip mini-chip--down" tabindex="0">▼ 5%<span class="badge-tooltip" data-i18n="vsLastMonth">from last month</span></span>
+          <span class="mini-chip mini-chip--down">▼ 5%<span class="badge-tooltip" data-i18n="vsLastMonth">from last month</span></span>
         </div>
         <span class="transit-num">2,581</span>
         <span class="transit-sub" data-i18n="transitMovementsSub">via passenger terminal</span>
+        <div class="transit-split">
+          <div class="transit-split-item">
+            <span class="transit-split-label">
+              <svg class="transit-split-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 3v14"/><path d="M6 11l6 6 6-6"/><path d="M5 21h14"/>
+              </svg>
+              <span data-i18n="transitImport">Import</span>
+            </span>
+            <span class="transit-split-value">1,547</span>
+          </div>
+          <div class="transit-split-item">
+            <span class="transit-split-label">
+              <svg class="transit-split-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 21V7"/><path d="M6 13l6-6 6 6"/><path d="M5 3h14"/>
+              </svg>
+              <span data-i18n="transitExport">Export</span>
+            </span>
+            <span class="transit-split-value">1,034</span>
+          </div>
+        </div>
       </div>
     </div>
     <div class="card card--transit">
       <div class="card-inner">
         <div class="eyebrow-row">
           <span class="card-eyebrow" data-i18n="transitPermits">Transit Permits</span>
-          <span class="mini-chip mini-chip--down" tabindex="0">▼ 8%<span class="badge-tooltip" data-i18n="vsLastMonth">from last month</span></span>
+          <span class="mini-chip mini-chip--down">▼ 8%<span class="badge-tooltip" data-i18n="vsLastMonth">from last month</span></span>
         </div>
         <span class="transit-num">629</span>
         <span class="transit-sub" data-i18n="transitPermitsSub">via passenger terminal</span>
+        <div class="transit-split">
+          <div class="transit-split-item">
+            <span class="transit-split-label">
+              <img src="images/jo-flag.jpg" class="transit-split-flag" alt="Jordan">
+              <span data-i18n="transitJordanian">Jordanian</span>
+            </span>
+            <span class="transit-split-value">387</span>
+          </div>
+          <div class="transit-split-item">
+            <span class="transit-split-label">
+              <svg class="transit-split-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+              </svg>
+              <span data-i18n="transitForeign">Foreign</span>
+            </span>
+            <span class="transit-split-value">242</span>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -129,7 +201,7 @@
       <div class="crossings-top">
         <div class="eyebrow-row">
           <span class="card-eyebrow" data-i18n="registeredDrivers">Registered Drivers</span>
-          <span class="mini-chip mini-chip--up" tabindex="0">▲ 2%<span class="badge-tooltip" data-i18n="vsLastMonth">from last month</span></span>
+          <span class="mini-chip mini-chip--up">▲ 2%<span class="badge-tooltip" data-i18n="vsLastMonth">from last month</span></span>
         </div>
         <div class="crossings-total-row">
           <img src="images/icon-driver.svg" class="wallets-total-icon" alt="">
@@ -148,7 +220,7 @@
     <div class="card-inner">
       <div class="eyebrow-row">
         <span class="card-eyebrow" data-i18n="smartGate">Smart Gate Movements</span>
-        <span class="mini-chip mini-chip--up" tabindex="0">▲ 12%<span class="badge-tooltip" data-i18n="vsLastMonth">from last month</span></span>
+        <span class="mini-chip mini-chip--up">▲ 12%<span class="badge-tooltip" data-i18n="vsLastMonth">from last month</span></span>
       </div>
       <div class="pulse-bars" id="pulseBars"></div>
       <span class="mini-num">7,126</span>
@@ -160,7 +232,7 @@
     <div class="card-inner">
       <div class="eyebrow-row">
         <span class="card-eyebrow" data-i18n="processingTime">Avg. Processing Time</span>
-        <span class="mini-chip mini-chip--down" tabindex="0">▼ 3%<span class="badge-tooltip" data-i18n="vsLastMonth">from last month</span></span>
+        <span class="mini-chip mini-chip--down">▼ 3%<span class="badge-tooltip" data-i18n="vsLastMonth">from last month</span></span>
       </div>
       <div class="gauge-wrap">
         <svg class="gauge-svg" viewBox="0 0 120 72">
@@ -186,7 +258,13 @@
   <div class="card card--cargo" data-reveal data-delay="80">
     <div class="card-inner">
       <span class="card-eyebrow" data-i18n="cargoTypes">Cargo / Vehicle Types</span>
-      <div class="cargo-grid" id="cargoGrid"></div>
+      <div class="cargo-layout">
+        <div class="cargo-feature" id="cargoFeature"></div>
+        <div class="cargo-grid-wrap">
+          <div class="cargo-grid" id="cargoGrid"></div>
+          <div class="cargo-pagination" id="cargoPagination"></div>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -194,9 +272,9 @@
 
   <div class="card" data-reveal data-delay="80">
     <div class="card-inner">
-      <div class="eyebrow-row">
+      <div class="eyebrow-row eyebrow-row--stack">
         <span class="card-eyebrow" data-i18n="yard4">Entry Movements Yard 4</span>
-        <span class="mini-chip mini-chip--up" tabindex="0">▲ 6%<span class="badge-tooltip" data-i18n="vsLastMonth">from last month</span></span>
+        <span class="mini-chip mini-chip--up">▲ 6%<span class="badge-tooltip" data-i18n="vsLastMonth">from last month</span></span>
       </div>
       <span class="yard-num">5,936</span>
     </div>
@@ -206,7 +284,7 @@
     <div class="card-inner">
       <div class="eyebrow-row">
         <span class="card-eyebrow" data-i18n="passengerExits">Passenger Terminal Exits</span>
-        <span class="mini-chip mini-chip--down" tabindex="0">▼ 17%<span class="badge-tooltip" data-i18n="vsLastMonth">from last month</span></span>
+        <span class="mini-chip mini-chip--down">▼ 17%<span class="badge-tooltip" data-i18n="vsLastMonth">from last month</span></span>
       </div>
       <span class="yard-num">3,319</span>
     </div>
@@ -239,11 +317,6 @@
   </div>
 
 </main>
-
-<footer class="footer">
-  <span>Aqaba Models · November 2025 · ASEZA</span>
-  <span>aseza.jo</span>
-</footer>
 
 <script src="v2-bento.js"></script>
 </body>

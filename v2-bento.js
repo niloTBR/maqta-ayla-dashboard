@@ -25,17 +25,27 @@ const LANG = {
     passengerTerminal: 'Passenger terminal',
     cargoTypes: 'Cargo / Vehicle Types',
     months: ['Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov'],
-    footer: 'Aqaba Models · November 2025 · ASEZA',
+    brandTitle: 'Aqaba Models',
+    brandSub: 'ASEZA',
     passengerSplit: 'Passenger Traffic Split',
     jordan: 'Jordan',
     other: 'Other',
     nationality: 'Nationalities',
     crossings: ['Al-Rashidiya', 'Wadi Araba', 'Passenger Terminal', 'Al-Durra'],
-    cargo: ['Containers', 'General Cargo', 'Buses', 'Tankers', 'Livestock', 'Cars'],
+    cargo: ['Containers', 'General Cargo', 'Heavy Loads', 'Crude Oil & Petroleum', 'Livestock', 'Cars', 'Refrigerated Cargo', 'Vegetable Oils', 'Ready-Mix Concrete'],
+    generalCargoSub: ['Phosphate', 'Grains', 'Distributed Goods'],
     transitMovements: 'Transit Movements',
     transitMovementsSub: 'via passenger terminal',
     transitPermitsSub: 'via passenger terminal',
-    cargoSub: ['Livestock 1%', 'Vehicles 1%'],
+    transitImport: 'Import',
+    transitExport: 'Export',
+    transitJordanian: 'Jordanian',
+    transitForeign: 'Foreign',
+    moveSingle: 'Single',
+    moveDouble: 'Double',
+    dirImport: 'Import',
+    dirExport: 'Export',
+    permitsCreated: 'Permits Created',
     countries: ['Jordan', 'Egypt', 'Iraq', 'Kazakhstan']
   },
   ar: {
@@ -58,18 +68,29 @@ const LANG = {
     transitPermits: 'تصاريح الترانزيت',
     alBalmExit: 'خروج البلم',
     passengerTerminal: 'خروج محطة الركاب',
-    cargoTypes: 'أنواع الشحنات',
+    cargoTypes: 'أنماط الشحن',
     months: ['يونيو', 'يوليو', 'أغسطس', 'سبتمبر', 'تشرين الأول', 'تشرين ثاني'],
-    footer: 'نامذج العقبة · تشرين ثاني 2025 · سلطة منطقة العقبة الاقتصادية الخاصة',
+    brandTitle: 'نموذج العقبة',
+    brandSub: 'سلطة منطقة العقبة الاقتصادية الخاصة',
     passengerSplit: 'توزيع حركة الركاب',
     jordan: 'الأردن',
     other: 'أخرى',
     nationality: 'الجنسيات',
     crossings: ['الراشدية', 'وادي عربة', 'محطة الركاب', 'الدرة'],
-    cargo: ['حاويات', 'بضائع عامة', 'بوسات/باصات', 'فقط نظام حاويات', 'مواشي', 'سيارات'],
+    cargo: ['حاويات', 'بضائع عامة', 'نقل المثقلات', 'نقل النفط الخام ومشتقاته بالصهاريج', 'مواشي', 'سيارات', 'نقل المواد المبردة', 'نقل الزيوت النباتية', 'نقل الباطون الجاهز'],
+    generalCargoSub: ['فوسفيات', 'حبوب', 'بضائع متنوعة'],
     transitMovements: 'حركات الترانزيت',
     transitMovementsSub: 'عبر محطة الركاب',
     transitPermitsSub: 'عبر محطة الركاب',
+    transitImport: 'استيراد',
+    transitExport: 'تصدير',
+    transitJordanian: 'أردنيون',
+    transitForeign: 'أجانب',
+    moveSingle: 'فردي',
+    moveDouble: 'مزدوج',
+    dirImport: 'وارد',
+    dirExport: 'صادر',
+    permitsCreated: 'تم إنشاء التصاريح',
     countries: ['الأردن', 'مصر', 'العراق', 'كازاخستان']
   }
 };
@@ -84,12 +105,20 @@ const DATA = {
     { pct: 2,  color: "#7E57C2" }
   ],
   cargoBreakdown: [
-    { pct: 40, color: "#1565C0", bg: "rgba(21,101,192,0.10)" },
-    { pct: 29, color: "#2E7D32", bg: "rgba(46,125,50,0.10)" },
-    { pct: 21, color: "#6A1B9A", bg: "rgba(106,27,154,0.10)" },
-    { pct: 8,  color: "#E65100", bg: "rgba(230,81,0,0.10)" },
-    { pct: 1,  color: "#795548", bg: "rgba(121,85,72,0.10)" },
-    { pct: 1,  color: "#455A64", bg: "rgba(69,90,100,0.10)" }
+    { pct: 38, color: "#1565C0", bg: "rgba(21,101,192,0.10)", moveType: "double", direction: "import" },
+    { pct: 25, color: "#2E7D32", bg: "rgba(46,125,50,0.10)", moveType: "single", direction: "export",
+      subItems: [
+        { pct: 60, color: "#2E7D32" },
+        { pct: 25, color: "#4CAF50" },
+        { pct: 15, color: "#81C784" }
+      ] },
+    { pct: 18, color: "#6A1B9A", bg: "rgba(106,27,154,0.10)", moveType: "single", direction: "import" },
+    { pct: 8,  color: "#E65100", bg: "rgba(230,81,0,0.10)", moveType: "single", direction: "export" },
+    { pct: 1,  color: "#795548", bg: "rgba(121,85,72,0.10)", moveType: "single", direction: "import" },
+    { pct: 1,  color: "#455A64", bg: "rgba(69,90,100,0.10)", moveType: "single", direction: "export" },
+    { pct: 5,  color: "#00838F", bg: "rgba(0,131,143,0.10)", moveType: "single", direction: "import" },
+    { pct: 3,  color: "#F9A825", bg: "rgba(249,168,37,0.12)", moveType: "single", direction: "import" },
+    { pct: 1,  color: "#546E7A", bg: "rgba(84,110,122,0.10)", moveType: "single", direction: "export" }
   ],
   countries: [
     { flagImg: "images/jo-flag.jpg",                count: 11899, countFormatted: "11,899" },
@@ -103,6 +132,30 @@ let crossingsAnimated = false;
 let cargoAnimated = false;
 let paxAnimated = false;
 
+function splitChipText() {
+  var arrowRe = /([▲▼])\s*(.+)/;
+  document.querySelectorAll('.mini-chip, .chip').forEach(function (chip) {
+    if (chip.querySelector('.chip-arrow')) return;
+    var textNode = null;
+    for (var i = 0; i < chip.childNodes.length; i++) {
+      var n = chip.childNodes[i];
+      if (n.nodeType === 3 && n.textContent.trim()) { textNode = n; break; }
+    }
+    if (!textNode) return;
+    var m = textNode.textContent.match(arrowRe);
+    if (!m) return;
+    var arrow = document.createElement('span');
+    arrow.className = 'chip-arrow';
+    arrow.textContent = m[1];
+    var pct = document.createElement('span');
+    pct.className = 'chip-pct';
+    pct.textContent = m[2].trim();
+    chip.insertBefore(pct, textNode);
+    chip.insertBefore(arrow, pct);
+    chip.removeChild(textNode);
+  });
+}
+
 document.addEventListener('DOMContentLoaded', function () {
   initWeekHover();
   initLangSwitch();
@@ -111,6 +164,7 @@ document.addEventListener('DOMContentLoaded', function () {
   initGaugeObserver();
   populateCrossings();
   populateCargo();
+  splitChipText();
   populateWeeklyChart();
   initRevealObserver();
   initCrossingsObserver();
@@ -277,11 +331,7 @@ function updateAllText() {
 
   // Date picker
   var dateLabel = document.getElementById('dateLabel');
-  if (dateLabel) dateLabel.textContent = currentLang === 'ar' ? 'تشرين ثاني 2025' : 'Nov 2025';
-
-  // Footer
-  var footerLeft = document.querySelector('.footer span:first-child');
-  if (footerLeft) footerLeft.textContent = t.footer;
+  if (dateLabel) dateLabel.textContent = currentLang === 'ar' ? 'تشرين ثاني 2025' : 'November 2025';
 
   // Reset crossing animation so bars re-animate
   crossingsAnimated = false;
@@ -497,23 +547,101 @@ function initCrossingsObserver() {
 // CARGO
 // ============================================================
 function populateCargo() {
-  const container = document.getElementById('cargoGrid');
-  if (!container) return;
+  const grid = document.getElementById('cargoGrid');
+  const feature = document.getElementById('cargoFeature');
+  if (!grid || !feature) return;
   const t = LANG[currentLang];
-  const lucideIcons = ['container', 'package', 'bus', 'fuel', 'paw-print', 'car'];
-  let html = '';
-  DATA.cargoBreakdown.forEach(function (item, i) {
-    html += '<div class="cargo-item">'
-      + '<div class="cargo-icon-wrap" style="background:' + item.bg + '">'
-      + '<i data-lucide="' + lucideIcons[i] + '" style="stroke:' + item.color + ';width:22px;height:22px;stroke-width:1.8;"></i>'
+  const lucideIcons = ['container', 'package', 'truck', 'fuel', 'cow', 'car', 'snowflake', 'droplet', 'construction'];
+  const FEATURE_INDEX = 1; // General Cargo
+
+  function buildIcon(name, color, size) {
+    if (name === 'cow') {
+      return '<span class="cargo-icon-mask" style="width:' + size + 'px;height:' + size + 'px;background-color:' + color + ';-webkit-mask-image:url(images/animal.svg);mask-image:url(images/animal.svg);"></span>';
+    }
+    return '<i data-lucide="' + name + '" style="stroke:' + color + ';width:' + size + 'px;height:' + size + 'px;stroke-width:1.8;"></i>';
+  }
+
+  function renderTile(item, i, opts) {
+    var moveLabel = item.moveType === 'double' ? t.moveDouble : t.moveSingle;
+    var dirLabel  = item.direction === 'export' ? t.dirExport : t.dirImport;
+    var iconSize  = opts && opts.large ? 32 : 22;
+    var wrapSize  = opts && opts.large ? 64 : 44;
+    return '<div class="cargo-item' + (opts && opts.large ? ' cargo-item--feature' : '') + '">'
+      + '<div class="cargo-icon-wrap" style="background:' + item.bg + ';width:' + wrapSize + 'px;height:' + wrapSize + 'px;">'
+      +   buildIcon(lucideIcons[i], item.color, iconSize)
       + '</div>'
       + '<span class="cargo-pct" style="color:' + item.color + ';">' + item.pct + '%</span>'
       + '<div class="cargo-bar-wrap"><div class="cargo-bar" data-width="' + item.pct + '" style="background:' + item.color + ';"></div></div>'
       + '<span class="cargo-name">' + t.cargo[i] + '</span>'
+      + '<div class="cargo-tags">'
+      +   '<span class="cargo-tag cargo-tag--' + item.moveType + '">' + moveLabel + '</span>'
+      +   '<span class="cargo-tag cargo-tag--' + item.direction + '">' + dirLabel + '</span>'
       + '</div>';
+  }
+
+  // Feature tile (General Cargo + sub-breakdown)
+  var featureItem = DATA.cargoBreakdown[FEATURE_INDEX];
+  var featureHtml = renderTile(featureItem, FEATURE_INDEX, { large: true });
+  if (featureItem.subItems && featureItem.subItems.length) {
+    featureHtml += '<div class="cargo-sub-list">';
+    featureItem.subItems.forEach(function (sub, si) {
+      var subName = (t.generalCargoSub && t.generalCargoSub[si]) || '';
+      featureHtml += '<div class="cargo-sub-item">'
+        +   '<span class="cargo-sub-dot" style="background:' + sub.color + ';"></span>'
+        +   '<span class="cargo-sub-name">' + subName + '</span>'
+        +   '<span class="cargo-sub-pct" style="color:' + sub.color + ';">' + sub.pct + '%</span>'
+        + '</div>';
+    });
+    featureHtml += '</div>';
+  }
+  featureHtml += '</div>'; // close cargo-item from renderTile
+  feature.innerHTML = featureHtml;
+
+  // Side grid (everything except feature)
+  var gridHtml = '';
+  DATA.cargoBreakdown.forEach(function (item, i) {
+    if (i === FEATURE_INDEX) return;
+    gridHtml += renderTile(item, i) + '</div>';
   });
-  container.innerHTML = html;
+  grid.innerHTML = gridHtml;
+
   if (typeof lucide !== 'undefined') lucide.createIcons();
+  setupCargoPagination(grid);
+}
+
+function setupCargoPagination(grid) {
+  var pag = document.getElementById('cargoPagination');
+  if (!pag || !grid) return;
+  var items = grid.querySelectorAll('.cargo-item');
+  if (!items.length) return;
+  var dots = '';
+  for (var i = 0; i < items.length; i++) {
+    dots += '<span class="cargo-dot' + (i === 0 ? ' is-active' : '') + '" data-idx="' + i + '"></span>';
+  }
+  pag.innerHTML = dots;
+
+  function updateActive() {
+    var dotEls = pag.querySelectorAll('.cargo-dot');
+    var firstItem = items[0];
+    if (!firstItem) return;
+    var step = firstItem.offsetWidth + 12; // card + gap
+    var idx = Math.round(grid.scrollLeft / step);
+    if (idx < 0) idx = 0;
+    if (idx >= dotEls.length) idx = dotEls.length - 1;
+    dotEls.forEach(function (d, i) {
+      d.classList.toggle('is-active', i === idx);
+    });
+  }
+
+  grid.removeEventListener('scroll', grid._cargoScroll);
+  grid._cargoScroll = function () {
+    if (grid._cargoRaf) return;
+    grid._cargoRaf = requestAnimationFrame(function () {
+      grid._cargoRaf = null;
+      updateActive();
+    });
+  };
+  grid.addEventListener('scroll', grid._cargoScroll, { passive: true });
 }
 function initCargoObserver() {
   const target = document.getElementById('cargoGrid');
